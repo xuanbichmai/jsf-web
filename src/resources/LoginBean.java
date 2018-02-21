@@ -1,11 +1,20 @@
 package resources;
 
-import javamodeles.Client;
+import javax.ejb.EJB;
+
+import ejb.CalculBons;
+import ejb.ClientEjbLocal;
+//import javamodeles.Client;
+import model.Client; //pointer sur entité Client créé dans ejb
 
 public class LoginBean {
 	private Client client ;
 	private Integer code ;
-	
+	@EJB
+	ClientEjbLocal ejbclient ;
+	@EJB
+	CalculBons calculbons ;
+
 	public LoginBean() {
 		client = new Client() ;		
 	}
@@ -22,9 +31,23 @@ public class LoginBean {
 		this.code = code;
 	}
 	public String validationClient() {
-		return "bienvenue" ;
+		if ((client=ejbclient.identifierUnClient(client))!=null) {
+			calculbons.genererBons(code);
+			int bons = client.getBons();
+			calculbons.calculerBons(bons);
+			client.setBons(calculbons.getNbbons());
+			ejbclient.mergeClient(client);
+			return "bienvenue" ;
+		}
+		else return "enregistrement" ;
 	}
 	public String enregistrerClient() {
-		return "bienvenue" ;
+		if (ejbclient.rechercherUnClient(client)==null){
+			calculbons.genererBons(5);
+			client.setBons(calculbons.getNbbons());
+			ejbclient.persistClient(client);
+			return "bienvenue" ;
+		}
+		else return "erreur" ;
 	}
 }

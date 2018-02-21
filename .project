@@ -3,6 +3,7 @@
 	<name>jsf1</name>
 	<comment></comment>
 	<projects>
+		<project>jsf1-ejb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
