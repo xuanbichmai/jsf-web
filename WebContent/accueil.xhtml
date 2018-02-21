@@ -11,20 +11,46 @@
 	<ui:define name="content">
 		<h:form>
 			<h2>Bonjour, merci d'entrer vos identifiants</h2>
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="3">
 				<h:outputText value="Nom :">
 				</h:outputText>
-				<h:inputText id="nom" value="#{loginBean.client.nom}">
+				<h:inputText id="nom" value="#{loginBean.client.nom}" 
+						required="true" 
+						requiredMessage="Votre nom!"
+						validatorMessage="Connexion admin interdite">
+						<f:validateRegex pattern="(?!^\s*admin\s*$).*"/>
 				</h:inputText>
+				<h:message for="nom"
+					style="color: red;
+					font-family: 'New Century Schoolbook', serif;
+					font-style: oblique;
+					text-decoration: underline">
+				</h:message>
 				<h:outputText value="Mot de passe :">
 				</h:outputText>
-				<h:inputSecret id="passe" value="#{loginBean.client.motdepasse}">
+				<h:inputSecret id="passe" value="#{loginBean.client.motdepasse}" required="true" requiredMessage="Votre mot de passe!">
 				</h:inputSecret>
+				<h:message for="passe"
+					style="color: red;
+					font-family: 'New Century Schoolbook', serif;
+					font-style: oblique;
+					text-decoration: underline">
+				</h:message>
 				<h:outputText value="Code :">
 				</h:outputText>
-				<h:inputText id="code" value="#{loginBean.code}">
+				<h:inputText id="code" value="#{loginBean.code}" required="true" 
+						requiredMessage="Votre code!" 
+						converterMessage="Le code est un entier"
+						validatorMessage="Votre code doit être entre 1 et 10">
+						<f:validateLongRange minimum="1" maximum="10"/>
 				</h:inputText>
-				<h:commandButton style="background-color: navy; color: white" value="Connexion" action="#{loginBean.validationClient}" >
+				<h:message for="code"
+					style="color: red;
+					font-family: 'New Century Schoolbook', serif;
+					font-style: oblique;
+					text-decoration: underline">
+				></h:message>
+				<h:commandButton style="background-color: #009999; color: white" value="Connexion" action="#{loginBean.validationClient}" >
 				</h:commandButton>
 			</h:panelGrid>
 			<br /> Des informations? cliquer <h:outputLink
