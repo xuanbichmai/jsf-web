@@ -16,8 +16,8 @@
 				</h:outputText>
 				<h:inputText id="nom" value="#{loginBean.client.nom}" 
 						required="true" 
-						requiredMessage="Votre nom!"
-						validatorMessage="Connexion admin interdite">
+						requiredMessage="#{msg.nom}"
+						validatorMessage="#{loginBean.interdireAdmin}">
 						<f:validateRegex pattern="(?!^\s*admin\s*$).*"/>
 				</h:inputText>
 				<h:message for="nom"
@@ -28,7 +28,7 @@
 				</h:message>
 				<h:outputText value="Mot de passe :">
 				</h:outputText>
-				<h:inputSecret id="passe" value="#{loginBean.client.motdepasse}" required="true" requiredMessage="Votre mot de passe!">
+				<h:inputSecret id="passe" value="#{loginBean.client.motdepasse}" required="true" requiredMessage="#{msg.motdepasse}">
 				</h:inputSecret>
 				<h:message for="passe"
 					style="color: red;
@@ -39,7 +39,7 @@
 				<h:outputText value="Code :">
 				</h:outputText>
 				<h:inputText id="code" value="#{loginBean.code}" required="true" 
-						requiredMessage="Votre code!" 
+						requiredMessage="#{msg.code}" 
 						converterMessage="Le code est un entier"
 						validatorMessage="Votre code doit être entre 1 et 10">
 						<f:validateLongRange minimum="1" maximum="10"/>

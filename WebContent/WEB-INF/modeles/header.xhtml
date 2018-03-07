@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <body>
-	<div
-		style="width: 100%; font-size: 36px; line-height: 48px; background-color: #009999; color: white">Entête du site lesbellesimages.com
+	<div>
+	<div style="width: 100%; font-size: 36px; line-height: 48px; background-color: #009999; color: white">Entête
+		du site lesbellesimages.com</div>
+	<div style="float: right; width: 10%; background: #44EE00; font-size: 12px; line-height: 18px; text-align: center">
+		<h3>
+			<b><h:outputText value="#{msg.invitelangue}"></h:outputText></b>
+		</h3>
+		<h:form id="langage_form">
+			<h:commandLink action="#{langageCommutateur.changeLangage('fr')}"
+				value="Français" />&nbsp;&nbsp;
+			<h:commandLink action="#{langageCommutateur.changeLangage('en')}"
+				value="English" />
+		</h:form>
 	</div>
-	<br/>	
+	</div>
+	<br />
+<!-- 	<f:loadBundle basename="resources.langages.messages_fr" var="msg" /> -->
 </body>
 </html>
-	

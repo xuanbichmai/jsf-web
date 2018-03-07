@@ -7,8 +7,13 @@
 	<application>
 		<message-bundle>resources.application</message-bundle>
 		<locale-config>
-			<default-locale>en</default-locale>
+			<default-locale>fr</default-locale>
+			<supported-locale>en</supported-locale>
 		</locale-config>
+		<resource-bundle>
+			<base-name>resources.langages.messages</base-name>
+		<var>msg</var>
+		</resource-bundle>
 	</application>
 	<managed-bean>
 		<managed-bean-name>loginBean</managed-bean-name>
@@ -24,6 +29,11 @@
 		<managed-bean-name>detailsClients</managed-bean-name>
 		<managed-bean-class>resources.DetailsClients</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>langageCommutateur</managed-bean-name>
+		<managed-bean-class>resources.LangageCommutateur</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 
 </faces-config>
