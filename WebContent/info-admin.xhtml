@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="WEB-INF/modeles/modele.xhtml">
+
+	<ui:define name="content">
+		<h2>Bienvenue administrateur</h2>
+		<h:form id="form" rendered="true">
+			<h:dataTable value="#{detailsClients.lesclients}" var="client"
+				cellpadding="5">
+				<h:column rendered="true">
+					<f:facet name="header">Nom</f:facet>
+					<h:outputText value="#{client.nom}" />
+				</h:column>
+				<h:column rendered="true">
+					<f:facet name="header">Prénom</f:facet>
+					<h:outputText value="#{client.prenom}" />
+				</h:column>
+				<h:column rendered="true">
+					<f:facet name="header">Age</f:facet>
+					<h:outputText value="#{client.age}" />
+				</h:column>
+				<h:column rendered="true">
+					<f:facet name="header">Bons</f:facet>
+					<h:outputText value="#{client.bons}" />
+				</h:column>
+				<h:column rendered="true">
+					<h:commandButton value="Supprimer"
+						action="#{detailsClients.supprimerClient(client)}">
+					</h:commandButton>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

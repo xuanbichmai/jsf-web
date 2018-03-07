@@ -15,5 +15,15 @@
 		<managed-bean-class>resources.LoginBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>adminBean</managed-bean-name>
+		<managed-bean-class>resources.AdminBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>detailsClients</managed-bean-name>
+		<managed-bean-class>resources.DetailsClients</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 
 </faces-config>
